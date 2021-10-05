@@ -26,7 +26,7 @@ export class Pharmacy {
   }
 
   isSpecialDrug(drugName) {
-    const specialDrugs = ["Herbal Tea", "Fervex", "Magic Pill"];
+    const specialDrugs = ["Herbal Tea", "Fervex", "Magic Pill", "Dafalgan"];
     return specialDrugs.includes(drugName);
   }
 
