@@ -49,3 +49,26 @@ describe("Pharmacy - Magic Pill behavior", () => {
     ).toEqual([new Drug("Magic Pill", 1, 50)]);
   });
 });
+
+describe("Pharmacy - Fervex behavior", () => {
+  it("should increase benefit by 1 above 10 days before expiration", () => {
+    expect(
+      new Pharmacy([new Drug("Fervex", 11, 1)]).updateBenefitValue()
+    ).toEqual([new Drug("Fervex", 10, 2)]);
+  });
+  it("should increase the benefit by two 10 days before expiration date", () => {
+    expect(
+      new Pharmacy([new Drug("Fervex", 10, 2)]).updateBenefitValue()
+    ).toEqual([new Drug("Fervex", 9, 4)]);
+  });
+  it("should increase the benefit by three 5 days before expiration date", () => {
+    expect(
+      new Pharmacy([new Drug("Fervex", 5, 2)]).updateBenefitValue()
+    ).toEqual([new Drug("Fervex", 4, 5)]);
+  });
+  it("should drop the benefit to 0 after expiration date", () => {
+    expect(
+      new Pharmacy([new Drug("Fervex", 0, 50)]).updateBenefitValue()
+    ).toEqual([new Drug("Fervex", -1, 0)]);
+  });
+});
