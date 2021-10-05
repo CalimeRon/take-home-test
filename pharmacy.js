@@ -44,12 +44,20 @@ export class Pharmacy {
         else if (expiresIn > 0) this.changeBenefitValue(drug, 3);
         else drug.benefit = 0;
         break;
+      case "Dafalgan":
+        expiresIn > 0
+          ? this.changeBenefitValue(drug, -2)
+          : this.changeBenefitValue(drug, -4);
+        break;
       default:
         break;
     }
   }
 
   changeBenefitValue(drug, increment) {
-    drug.benefit = Math.min(50, drug.benefit + increment);
+    drug.benefit =
+      increment > 0
+        ? Math.min(50, drug.benefit + increment)
+        : Math.max(0, drug.benefit + increment);
   }
 }
